@@ -150,3 +150,34 @@ Explain potential race conditions in this MongoDB favorite/unfavorite flow and p
 
 ---
 Happy prompting! Iterate, refine, and always review AI-suggested code like a teammate's PR.
+
+## Automated Commit Message Demonstration
+
+If you modify several files (e.g., add rate limiting + tests), you can ask Copilot Chat:
+```
+Generate a concise conventional commit message for the staged changes. Use type feat if new functionality was added, otherwise refactor or test as appropriate. Provide only the subject line first, then an optional body summarizing rationale.
+```
+You might receive suggestions like:
+```
+feat(rate-limit): add per-IP rate limiting middleware and accompanying tests
+
+Adds configurable in-memory rate limiter (60 req/min). Includes tests for normal flow and exceeding limits. Future: persist counters with Redis.
+```
+Evaluate: correct type? scope meaningful? subject under 72 chars? actionable? If yes, accept. If not, refine: "Make the subject shorter" or "Use chore instead of feat".
+
+CLI alternative (if feature available):
+```
+gh copilot suggest -t commit
+```
+
+## Suggested Next Practice Steps
+1. Add pagination helper with Copilot, then write tests via prompt.  
+2. Introduce an environment variable validator (e.g., using `zod` or manual checks) using a structured prompt.  
+3. Refactor `items.js` to extract query construction into a pure function; use Chat to ensure no behavior change.  
+4. Generate OpenAPI (Swagger) doc stubs by prompting Copilot to infer schemas from models.  
+5. Ask Copilot to create a performance test outline for loading many comments.  
+6. Use Copilot to propose security hardening changes (rate limiting, helmet, CSRF tokens) and then implement one.  
+7. Draft a GitHub Actions CI workflow file with Copilot and refine for caching and test matrix.
+
+---
+Keep exploring—strong prompts + critical review = productive AI pairing.
