@@ -5,14 +5,14 @@ This guide walks you through using GitHub Copilot in this repository to accelera
 ## 1. Verify GitHub Copilot Installation
 
 You can confirm Copilot is active in VS Code:
-- Open the Extensions view (Ctrl+Shift+X) and search for "GitHub Copilot" (and optionally "GitHub Copilot Chat"). Ensure they are enabled (green check mark).  
-- Status bar: Look for the Copilot icon; clicking it shows status (enabled/disabled).  
+- Open the Extensions view (Ctrl+Shift+X) and search for "GitHub Copilot" (and optionally "GitHub Copilot Chat"). Ensure they are enabled (green check mark).
+- Status bar: Look for the Copilot icon; clicking it shows status (enabled/disabled).
 - Inline suggestion test: Open a JavaScript file, start typing `function demo(` and pause—grey ghost text suggestions should appear. Press `Tab` to accept or `Ctrl+[` / `Ctrl+]` (or `Alt` equivalents) to cycle.
 - Chat: Open the Copilot Chat panel (Ctrl+I or View > Chat) and ask: `Explain this repository structure`. A response indicates chat extension is functioning.
 
 If not installed:
-1. Install the extensions: GitHub Copilot & GitHub Copilot Chat.  
-2. Sign in with GitHub when prompted.  
+1. Install the extensions: GitHub Copilot & GitHub Copilot Chat.
+2. Sign in with GitHub when prompted.
 3. Ensure you have an active Copilot subscription or trial.
 
 ## 2. Create a New Branch and Commit Changes
@@ -35,13 +35,13 @@ You can ask Copilot Chat: `Generate git commands to create a new branch for addi
 ## 3. Create a New GET Function with Copilot Assistance
 
 Technique used in `backend/routes/api/comments.js`:
-1. Start with a descriptive multi-line comment prompt:  
+1. Start with a descriptive multi-line comment prompt:
    ```js
    // Hey GitHub Copilot, please add an Express route here that returns the last 10 comments
    // for an item specified by :itemId, sorted by newest first...
    ```
-2. Press Enter and wait—Copilot suggests route code.  
-3. Accept (Tab) or partially accept & refine.  
+2. Press Enter and wait—Copilot suggests route code.
+3. Accept (Tab) or partially accept & refine.
 4. Run tests or curl the endpoint.
 
 Tip: Be explicit about:
@@ -53,9 +53,9 @@ Tip: Be explicit about:
 ## 4. Use Comments to Guide Copilot for Specific Functions
 
 Prompt patterns:
-- "// Generate a pagination helper that takes (page, perPage, total) and returns meta object"  
-- "// Write a pure function to sanitize user-provided HTML (placeholder implementation)"  
-- "// Add middleware to log method, path, response time"  
+- "// Generate a pagination helper that takes (page, perPage, total) and returns meta object"
+- "// Write a pure function to sanitize user-provided HTML (placeholder implementation)"
+- "// Add middleware to log method, path, response time"
 
 After insertion, review & adjust for security (especially anything involving crypto, auth, SQL, or sanitization).
 
@@ -65,7 +65,7 @@ Better prompts include context: supply expected inputs/outputs, constraints, and
 
 Use Chat panel for targeted refactors:
 1. Highlight a function or file.
-2. Open Copilot Chat and ask: `Refactor selection to reduce nesting and add early returns.`  
+2. Open Copilot Chat and ask: `Refactor selection to reduce nesting and add early returns.`
 3. Review the diff it proposes; apply selectively.
 
 Example refactor request for `items.js` heavy route logic:
@@ -82,16 +82,16 @@ Methods:
 - README improvements: Ask Chat: `Suggest a concise 'API Overview' section for this repo.`
 
 Quality tips:
-- Verify parameter & return types; adjust vague descriptions.  
-- Avoid leaking secrets or internal-only notes.  
+- Verify parameter & return types; adjust vague descriptions.
+- Avoid leaking secrets or internal-only notes.
 
 ## 7. Automate Commit Messages with Copilot
 
 You can leverage Copilot to draft conventional commits:
-- Stage your changes.  
-- Open Copilot Chat: `Generate a conventional commit message summarizing staged changes.`  
-- Or run (with GitHub CLI & Copilot plugin if available):  
-  `gh copilot suggest -t commit` (feature availability may vary).  
+- Stage your changes.
+- Open Copilot Chat: `Generate a conventional commit message summarizing staged changes.`
+- Or run (with GitHub CLI & Copilot plugin if available):
+  `gh copilot suggest -t commit` (feature availability may vary).
 
 Example AI-generated messages for this guide addition:
 - `docs: add comprehensive GitHub Copilot learning guide covering setup, prompting, refactoring, and commit automation`
@@ -109,11 +109,11 @@ Choose the one matching your change scope (docs vs feature vs chore). Keep it un
 | Docs | Ask for JSDoc/README section | "Generate JSDoc for the following function; include examples" |
 
 ## Risk & Review Checklist for AI-Suggested Code
-- Security: Are inputs validated & sanitized?  
-- Performance: Any N+1 queries or unbounded scans?  
-- Licensing: Did suggestion copy external proprietary code? (If in doubt, rewrite manually.)  
-- Error handling: Do we leak stack traces?  
-- Tests: Do we have coverage for new logic & failure paths?  
+- Security: Are inputs validated & sanitized?
+- Performance: Any N+1 queries or unbounded scans?
+- Licensing: Did suggestion copy external proprietary code? (If in doubt, rewrite manually.)
+- Error handling: Do we leak stack traces?
+- Tests: Do we have coverage for new logic & failure paths?
 
 ## Example End-to-End Workflow (You Can Practice)
 1. Create new branch: `feature/rate-limit`
@@ -125,7 +125,7 @@ Choose the one matching your change scope (docs vs feature vs chore). Keep it un
 7. Push branch & open PR.
 
 ## Copilot Do's & Don'ts
-**Do**: Provide constraints, review critically, pair with tests, keep prompts contextual.  
+**Do**: Provide constraints, review critically, pair with tests, keep prompts contextual.
 **Don't**: Paste sensitive data, blindly accept complex crypto/auth logic, treat suggestions as authoritative.
 
 ## Troubleshooting
@@ -171,12 +171,12 @@ gh copilot suggest -t commit
 ```
 
 ## Suggested Next Practice Steps
-1. Add pagination helper with Copilot, then write tests via prompt.  
-2. Introduce an environment variable validator (e.g., using `zod` or manual checks) using a structured prompt.  
-3. Refactor `items.js` to extract query construction into a pure function; use Chat to ensure no behavior change.  
-4. Generate OpenAPI (Swagger) doc stubs by prompting Copilot to infer schemas from models.  
-5. Ask Copilot to create a performance test outline for loading many comments.  
-6. Use Copilot to propose security hardening changes (rate limiting, helmet, CSRF tokens) and then implement one.  
+1. Add pagination helper with Copilot, then write tests via prompt.
+2. Introduce an environment variable validator (e.g., using `zod` or manual checks) using a structured prompt.
+3. Refactor `items.js` to extract query construction into a pure function; use Chat to ensure no behavior change.
+4. Generate OpenAPI (Swagger) doc stubs by prompting Copilot to infer schemas from models.
+5. Ask Copilot to create a performance test outline for loading many comments.
+6. Use Copilot to propose security hardening changes (rate limiting, helmet, CSRF tokens) and then implement one.
 7. Draft a GitHub Actions CI workflow file with Copilot and refine for caching and test matrix.
 
 ---
