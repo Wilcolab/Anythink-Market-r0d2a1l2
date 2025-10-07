@@ -50,6 +50,14 @@ const Tags = {
   getAll: () => requests.get("/tags"),
 };
 
+// Stats object for retrieving marketplace statistics
+// Provides methods to fetch overall platform metrics
+const Stats = {
+  // GET /api/stats - Fetch marketplace statistics
+  // Returns counts of users, items, and comments
+  get: () => requests.get("/stats"),
+};
+
 const limit = (count, p) => `limit=${count}&offset=${p ? p * count : 0}`;
 const omitSlug = (item) => Object.assign({}, item, { slug: undefined });
 const Items = {
@@ -90,6 +98,7 @@ const agentObj = {
   Comments,
   Profile,
   Tags,
+  Stats,
   setToken: (_token) => {
     token = _token;
   },

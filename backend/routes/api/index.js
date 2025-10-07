@@ -6,6 +6,7 @@ router.use('/items', require('./items'));
 router.use('/tags', require('./tags'));
 router.use('/comments', require('./comments'));
 router.use('/ping', require('./ping'));
+router.use('/stats', require('./stats'));
 
 router.use(function(err, req, res, next){
   if(err.name === 'ValidationError'){

@@ -214,6 +214,13 @@ class AnythinkClient {
     const result = await this.#apiCall({ url: "/api/tags" });
     return result.data?.tags;
   }
+
+  // GET /api/stats - Retrieve marketplace statistics
+  // Returns aggregated counts of users, items, and comments
+  async getStats() {
+    const result = await this.#apiCall({ url: "/api/stats" });
+    return result.data?.stats;
+  }
 }
 
 module.exports = { AnythinkClient };
